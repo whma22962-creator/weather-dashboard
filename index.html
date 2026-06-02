@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天气仪表盘</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 顶部导航栏 -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">🌤️ 天气仪表盘</div>
+                <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+                    🌙
+                </button>
+            </div>
+        </header>
+
+        <!-- 主容器 -->
+        <main class="main-content">
+            <!-- 搜索区域 -->
+            <section class="search-section">
+                <div class="search-container">
+                    <input 
+                        type="text" 
+                        id="cityInput" 
+                        class="city-input" 
+                        placeholder="输入城市名称（如：北京、上海、杭州）..."
+                        autocomplete="off"
+                    >
+                    <button class="search-btn" id="searchBtn" aria-label="搜索天气">
+                        <span class="search-icon">🔍</span>
+                    </button>
+                </div>
+                <div class="status-message" id="statusMessage"></div>
+            </section>
+
+            <!-- 加载状态 -->
+            <div class="loading-spinner" id="loadingSpinner" style="display: none;">
+                <div class="spinner"></div>
+                <p>加载中...</p>
+            </div>
+
+            <!-- 当前天气卡片 -->
+            <section class="current-weather" id="currentWeather" style="display: none;">
+                <div class="weather-card">
+                    <div class="weather-header">
+                        <div class="location-info">
+                            <h2 class="city-name" id="cityName"></h2>
+                            <p class="update-time" id="updateTime"></p>
+                        </div>
+                        <div class="weather-icon" id="weatherIcon">🌤️</div>
+                    </div>
+
+                    <div class="temperature-section">
+                        <div class="main-temp">
+                            <span class="temp-value" id="tempValue">--</span>
+                            <span class="temp-unit">°C</span>
+                        </div>
+                        <p class="weather-description" id="weatherDesc">--</p>
+                    </div>
+
+                    <div class="weather-details">
+                        <div class="detail-item">
+                            <span class="detail-label">体感温度</span>
+                            <span class="detail-value" id="feelsLike">--°C</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">湿度</span>
+                            <span class="detail-value" id="humidity">--%</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">风速</span>
+                            <span class="detail-value" id="windSpeed">-- km/h</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">气压</span>
+                            <span class="detail-value" id="pressure">-- hPa</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 7天预报 -->
+            <section class="forecast-section" id="forecastSection" style="display: none;">
+                <h3 class="section-title">7 天天气预报</h3>
+                <div class="forecast-container" id="forecastContainer"></div>
+            </section>
+
+            <!-- 错误提示 -->
+            <div class="error-message" id="errorMessage" style="display: none;"></div>
+        </main>
+
+        <!-- 页脚 -->
+        <footer class="footer">
+            <p>数据来源：Open-Meteo | 天气数据实时更新</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
